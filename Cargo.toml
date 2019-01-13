@@ -1,0 +1,10 @@
+[package]
+name = "homeblocks"
+version = "0.1.0"
+authors = ["Joel Takvorian <joel.takvorian@qaraywa.net>"]
+edition = "2018"
+
+[dependencies]
+actix-web = "0.7.18"
+serde = "1.0.84"
+serde_derive = "1.0.84"
