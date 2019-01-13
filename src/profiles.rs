@@ -9,7 +9,9 @@ pub struct Profile {
 pub fn login_profile() -> Profile {
     let page = blocks::Page {
         main_blocks: vec![],
-        note_blocks: vec![],
+        note_blocks: vec![
+            blocks::note_block(String::from("<h3>Welcome to Homeblocks.net</h3><br/>Build your homepage, block after block!"), -1, -1, Option::None)
+        ],
         links_blocks: vec![
             blocks::links_block(vec![], 0, 0, Option::from(String::from("Login")))
         ]

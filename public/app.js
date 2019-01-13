@@ -14,20 +14,20 @@ function computePositions(blocks) {
     var block, i;
     for (i in blocks) {
         block = blocks[i];
-        map[block.meta.posx + "," + block.meta.posy] = block;
+        map[block.posx + "," + block.posy] = block;
     }
     for (i in blocks) {
         block = blocks[i];
-        block.N = map[block.meta.posx + "," + (block.meta.posy - 1)] !== undefined;
-        block.S = map[block.meta.posx + "," + (block.meta.posy + 1)] !== undefined;
-        block.E = map[(block.meta.posx + 1) + "," + block.meta.posy] !== undefined;
-        block.W = map[(block.meta.posx - 1) + "," + block.meta.posy] !== undefined;
+        block.N = map[block.posx + "," + (block.posy - 1)] !== undefined;
+        block.S = map[block.posx + "," + (block.posy + 1)] !== undefined;
+        block.E = map[(block.posx + 1) + "," + block.posy] !== undefined;
+        block.W = map[(block.posx - 1) + "," + block.posy] !== undefined;
     }
 }
 function findBlockByPosition(blocks, x, y) {
     for (var i in blocks) {
         var block = blocks[i];
-        if (block.meta.posx == x && block.meta.posy == y) {
+        if (block.posx == x && block.posy == y) {
             return block;
         }
     }
@@ -54,8 +54,8 @@ function fillPageStyle(blocks, minPos, animateAll) {
     }
 }
 function checkOutOfScreen(block, minPos) {
-    var marginLeft = -FrontBlock.HALF_WIDTH + block.meta.posx * FrontBlock.WIDTH;
-    var marginTop = -FrontBlock.HALF_HEIGHT + block.meta.posy * FrontBlock.HEIGHT;
+    var marginLeft = -FrontBlock.HALF_WIDTH + block.posx * FrontBlock.WIDTH;
+    var marginTop = -FrontBlock.HALF_HEIGHT + block.posy * FrontBlock.HEIGHT;
     var x = window.innerWidth / 2 + marginLeft;
     var y = window.innerHeight / 2 + marginTop;
     if (x < minPos.x) {
@@ -81,9 +81,9 @@ var lightBlockColor = function() {
 }();
 function fillBlockStyle(block, id, minPos, animate) {
     block.styleData = {
-        marginLeft: -minPos.x - FrontBlock.HALF_WIDTH + block.meta.posx * FrontBlock.WIDTH,
-        marginTop: -minPos.y - FrontBlock.HALF_HEIGHT + block.meta.posy * FrontBlock.HEIGHT,
-        color: ((block.meta.posx + block.meta.posy) % 2) ? lightBlockColor : "#020202",
+        marginLeft: -minPos.x - FrontBlock.HALF_WIDTH + block.posx * FrontBlock.WIDTH,
+        marginTop: -minPos.y - FrontBlock.HALF_HEIGHT + block.posy * FrontBlock.HEIGHT,
+        color: ((block.posx + block.posy) % 2) ? lightBlockColor : "#020202",
         dx: 0,
         dy: 0
     };
@@ -115,7 +115,7 @@ function computeBlockStyle(block, animate) {
 function isFreePosition(pos, page) {
     for (var i in page.blocks) {
         var block = page.blocks[i];
-        if (pos.x == block.meta.posx && pos.y == block.meta.posy) {
+        if (pos.x == block.posx && pos.y == block.posy) {
             return false;
         }
     }
@@ -159,8 +159,8 @@ function findFreePosition(page) {
 function mergeInPage(page, blocks) {
     for (var i in blocks) {
         var pos = findFreePosition(page);
-        blocks[i].meta.posx = pos.x;
-        blocks[i].meta.posy = pos.y;
+        blocks[i].posx = pos.x;
+        blocks[i].posy = pos.y;
         page.blocks.push(blocks[i]);
     }
 }

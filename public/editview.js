@@ -88,10 +88,10 @@ function initEditListeners($scope, $location, $http, $document) {
     };
     $scope.onSwapBlocks = function(b1, b2x, b2y) {
         var b2 = findBlockByPosition($scope.page.blocks, b2x, b2y);
-        b2.meta.posx = b1.meta.posx;
-        b2.meta.posy = b1.meta.posy;
-        b1.meta.posx = b2x;
-        b1.meta.posy = b2y;
+        b2.posx = b1.posx;
+        b2.posy = b1.posy;
+        b1.posx = b2x;
+        b1.posy = b2y;
         b1.animate = true;
         b2.animate = true;
         fillPageStyle($scope.page.blocks, $scope.minPos);
@@ -111,8 +111,8 @@ function initEditListeners($scope, $location, $http, $document) {
 }
 function createEmptyBlock(x, y, type) {
     var block = new FrontBlock();
-    block.meta.posx = x;
-    block.meta.posy = y;
+    block.posx = x;
+    block.posy = y;
     block.kind = type;
     if (type == "links" || type == "audio" || type == "video" || type == "image") {
         block.links = [];

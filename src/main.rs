@@ -21,6 +21,7 @@ fn login(_: HttpRequest) -> Result<Json<profiles::Profile>> {
 }
 
 fn main() {
+    println!("Starting server on http://127.0.0.1:8000");
     server::new(|| {
         App::new()
             .resource("api/logged", |r| r.f(logged))

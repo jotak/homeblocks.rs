@@ -4,11 +4,11 @@
     <div class="block edit" style="{{ block.style }}" ng-repeat="block in page.blocks">
         <div ng-class="{'hidden': block.editTitle }">
             <div ng-if="block.kind != 'main'" class="block-title" ng-click='onClickBlockTitle(block, "blockTitle_" + block.id);'>
-                {{ block.meta.title || "(no title)" }}
+                {{ block.title || "(no title)" }}
             </div>
         </div>
         <div ng-class="{'hidden': !block.editTitle }">
-            <input id='{{ "blockTitle_" + block.id }}' type='text' placeholder='Title' ng-model='block.meta.title' press-enter="onSaveBlock(block);">
+            <input id='{{ "blockTitle_" + block.id }}' type='text' placeholder='Title' ng-model='block.title' press-enter="onSaveBlock(block);">
             <input type='button' value='Ok' ng-click="onSaveBlock(block);">
         </div>
         <ng-include src="'partials/block-'+ block.kind + '-edit.html'"></ng-include>

@@ -1,5 +1,5 @@
-<a ng-if="block.N" ng-click="onSwapBlocks(block, block.meta.posx, block.meta.posy-1);" class="btn-north" ng-mouseover="page.message='Swap blocks'"><i class="fa fa-refresh"></i></a>
-<a ng-if="block.E" ng-click="onSwapBlocks(block, block.meta.posx+1, block.meta.posy);" class="btn-east" ng-mouseover="page.message='Swap blocks'"><i class="fa fa-refresh"></i></a>
+<a ng-if="block.N" ng-click="onSwapBlocks(block, block.posx, block.posy-1);" class="btn-north" ng-mouseover="page.message='Swap blocks'"><i class="fa fa-refresh"></i></a>
+<a ng-if="block.E" ng-click="onSwapBlocks(block, block.posx+1, block.posy);" class="btn-east" ng-mouseover="page.message='Swap blocks'"><i class="fa fa-refresh"></i></a>
 <a ng-if="!block.N" ng-click="block.createN = !block.createN;" class="btn-north" ng-mouseover="page.message='Create a block'"><i class="fa fa-plus-square"></i></a>
 <a ng-if="!block.S" ng-click="block.createS = !block.createS;" class="btn-south" ng-mouseover="page.message='Create a block'"><i class="fa fa-plus-square"></i></a>
 <a ng-if="!block.E" ng-click="block.createE = !block.createE;" class="btn-east" ng-mouseover="page.message='Create a block'"><i class="fa fa-plus-square"></i></a>
