@@ -176,13 +176,3 @@ function enterBlock($scope, block) {
         }
     }
 }
-function flattenBlocks(page) {
-    const flat = [];
-    ["main", "note", "links"].forEach(k => {
-        page[k + "_blocks"].forEach(b => {
-            b.kind = k;
-            flat.push(b);
-        });
-    });
-    return flat;
-}

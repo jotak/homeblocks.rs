@@ -54,7 +54,6 @@ angular.module('homeblocks.mainview', ['ngRoute'])
                 $scope.isLoggedIn = false;
                 $scope.isAtHome = false;
             }
-        $scope.page.blocks = flattenBlocks($scope.page);
             $scope.minPos = { x: 0, y: 0 };
             fillPageStyle($scope.page.blocks, $scope.minPos, true);
             initMainListeners($scope, $location, $http);
@@ -107,7 +106,6 @@ function initMainListeners($scope, $location, $http) {
             $scope.showUpload = !$scope.showUpload;
             $scope.page = eval('(' + uploaded + ')');
             saveProfile($http, $scope);
-            $scope.page.blocks = flattenBlocks($scope.page);
             $scope.minPos = {x: 0, y: 0};
             fillPageStyle($scope.page.blocks, $scope.minPos, true);
         }
@@ -135,7 +133,6 @@ function initMainListeners($scope, $location, $http) {
     };
     $scope.onClickLogin = function() {
         $http.post('/api/login', {refUser: $scope.refUser, profile: $scope.profile}).success(function(ctx) {
-            $scope.page.blocks = flattenBlocks($scope.page);
             ctx.page.blocks.forEach(function(b) { b.animate = true; });
             mergeInPage($scope.page, ctx.page.blocks);
             $scope.minPos = {x: 0, y: 0};

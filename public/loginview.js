@@ -10,7 +10,6 @@ angular.module('homeblocks.loginview', ['ngRoute'])
         $http.get('/api/login').success(function(ctx) {
             $rootScope.title = ctx.title;
             $scope.page = ctx.page;
-            $scope.page.blocks = flattenBlocks($scope.page);
             $scope.minPos = {x: 0, y: 0};
             fillPageStyle($scope.page.blocks, $scope.minPos, true);
         }).error(function (data) {

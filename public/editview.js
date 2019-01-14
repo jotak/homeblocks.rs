@@ -18,7 +18,6 @@ angular.module('homeblocks.editview', ['ngRoute'])
             if ($scope.logged != $scope.refUser) {
                 $location.path("u/" + $scope.refUser + "/" + $scope.profile);
             }
-            $scope.page.blocks = flattenBlocks($scope.page);
             fillPageStyle($scope.page.blocks, $scope.minPos);
             initEditListeners($scope, $location, $http, $document);
         }).error(function (data) {
@@ -113,7 +112,7 @@ function createEmptyBlock(x, y, type) {
     var block = new FrontBlock();
     block.posx = x;
     block.posy = y;
-    block.kind = type;
+    block.type = type;
     if (type == "links" || type == "audio" || type == "video" || type == "image") {
         block.links = [];
     } else if (type == "list") {

@@ -1,16 +1,13 @@
 #[macro_use]
 extern crate serde_derive;
-
 extern crate serde;
+extern crate uuid;
 extern crate actix_web;
+#[macro_use]
+extern crate lazy_static;
 
 use actix_web::{server, App, HttpRequest, Responder, fs, Json, Result, http};
 mod profiles;
-
-// fn greet(req: &HttpRequest) -> impl Responder {
-//     let to = req.match_info().get("name").unwrap_or("World");
-//     format!("Hello {}!", to)
-// }
 
 fn logged(_: &HttpRequest) -> impl Responder {
     ""
@@ -30,8 +27,7 @@ fn main() {
                 "/",
                 fs::StaticFiles::new("./public")
                     .unwrap()
-                    .show_files_listing())
-//            .resource("/", |r| r.f(greet))
+                    .index_file("index.html"))
     })
     .bind("127.0.0.1:8000")
     .expect("Can not bind to port 8000")
